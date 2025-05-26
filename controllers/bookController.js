@@ -733,6 +733,7 @@ const getMostSoldBooks = asyncHandler(async (req, res) => {
         totalSold: 1,
         isDigital: "$book.isDigital",
         isAudiobook: "$book.isAudiobook",
+        imageUrl: "$book.imageUrl"
       },
     },
     { $sort: { totalSold: -1 } },
