@@ -1,7 +1,9 @@
 // routes/bookRoutes.js
 const express = require("express");
 const router = express.Router();
-const bookUpload = require("../utils/multer");
+// const upload = require("../utils/multer");
+const { bookUpload } = require("../utils/multer");
+
 const { protect, checkSellerRole } = require("../middlewares/authMiddleware");
 const {
   getDigitalBooks,
@@ -25,7 +27,7 @@ router.post(
   "/createBook",
   protect,
   checkSellerRole,
-  bookUpload.fields([
+bookUpload.fields([
     { name: "image", maxCount: 1 },
     { name: "file", maxCount: 1 },
   ]),
