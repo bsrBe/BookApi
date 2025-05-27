@@ -1,6 +1,6 @@
 const { Wishlist, validateWishlist } = require('../models/wishlistModel');
 const Book = require('../models/bookModel');
-const { Cart } = require('../models/cartModel');
+const  Cart  = require('../models/cartModel');
 const asyncHandler = require('express-async-handler');
 
 // @desc    Add book to wishlist
