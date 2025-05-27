@@ -121,8 +121,8 @@ const addToCart = asyncHandler(async (req, res) => {
     await cart.save();
 
     // Remove from wishlist
-    wishlistItem.status = 'removed';
-    await wishlistItem.save();
+    // wishlistItem.status = 'removed';
+    // await wishlistItem.save();
 
     res.status(200).json({
         message: 'Book added to cart successfully',
