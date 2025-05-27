@@ -1,6 +1,6 @@
 const { Wishlist, validateWishlist } = require('../models/wishlistModel');
 const Book = require('../models/bookModel');
-const  Cart  = require('../models/cartModel');
+const Cart = require('../models/cartModel');
 const asyncHandler = require('express-async-handler');
 
 // @desc    Add book to wishlist
@@ -110,11 +110,14 @@ const addToCart = asyncHandler(async (req, res) => {
     cart.items.push({
         book: book._id,
         quantity: 1,
-        price: book.price
+        price: book.price || 0  // Ensure price is a number
     });
 
-    // Update cart total
-    cart.totalPrice = cart.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    // Update cart total with proper number handling
+    cart.totalPrice = cart.items.reduce((total, item) => {
+        const itemTotal = (Number(item.price) || 0) * (Number(item.quantity) || 0);
+        return total + itemTotal;
+    }, 0);
     await cart.save();
 
     // Remove from wishlist
