@@ -16,6 +16,7 @@ const webhookRoutes = require("./routes/webhookRoutes");
 const userRoutes = require("./routes/userRoutes");
 const sellerRoutes = require("./routes/sellerRoutes");
 const interactionRoutes = require("./routes/interactionRoutes"); // Add interaction routes
+const wishlistRoutes = require("./routes/wishlistRoutes");
 // const opn = require('opn');
 const path = require("path"); 
 app.use(cors({
@@ -74,7 +75,8 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/webhook", webhookRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/seller', sellerRoutes);
-app.use('/api/interactions', interactionRoutes); // Add interaction routes
+app.use('/api/interactions', interactionRoutes);
+app.use('/api/wishlist',wishlistRoutes);
 
 connectDB();
 
